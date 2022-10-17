@@ -1,4 +1,4 @@
-class SinglyLinkedList{
+class SinglyLinkedList1{
     int data;
     SinglyLinkedList next;
     SinglyLinkedList head = null;
@@ -28,6 +28,7 @@ class SinglyLinkedList{
         }
         System.out.println();
     }
+    
     public void reverse(){
         SinglyLinkedList prev = null;
         SinglyLinkedList current = head;
@@ -43,7 +44,7 @@ class SinglyLinkedList{
 }
 public class reverseSLL {
     public static void main(String[]args){
-        SinglyLinkedList sll = new SinglyLinkedList();
+        SinglyLinkedList1 sll = new SinglyLinkedList1();
         sll.add(1);
         sll.add(2);
         sll.add(3);

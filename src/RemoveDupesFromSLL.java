@@ -54,7 +54,7 @@ class SinglyLinkedList{
     }
 }
 
-public class removeDupesFromSLL {
+class removeDupesFromSLL {
     public static void main(String[]args){
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.add(2);
