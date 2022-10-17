@@ -31,5 +31,6 @@ public class performXOROnTwoBinaryStrings {
             }
         }
         System.out.println(res);
+        sc.close();
     }
 }

@@ -28,47 +28,30 @@ class SinglyLinkedList{
         }
         System.out.println();
     }
-
-    public void sort(){
-        SinglyLinkedList temp = head;
-        while(temp != null){
-            SinglyLinkedList temp2 = temp.next;
-            while(temp2 != null){
-                if(temp.data > temp2.data){
-                    int tempData = temp.data;
-                    temp.data = temp2.data;
-                    temp2.data = tempData;
-                }
-                temp2 = temp2.next;
-            }
-            temp = temp.next;
+    public void reverse(){
+        SinglyLinkedList prev = null;
+        SinglyLinkedList current = head;
+        SinglyLinkedList next = null;
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
-    }
-
-    public void removeDuplicates(){
-        SinglyLinkedList ptr = head;
-        while(ptr.next != null){
-            if(ptr.data == ptr.next.data) ptr.next = ptr.next.next;
-            else ptr = ptr.next;
-        }
+        head = prev;
     }
 }
-
-public class removeDupesFromSLL {
+public class reverseSLL {
     public static void main(String[]args){
         SinglyLinkedList sll = new SinglyLinkedList();
+        sll.add(1);
         sll.add(2);
         sll.add(3);
         sll.add(4);
-        sll.add(1);
-        sll.add(4);
-        sll.add(5);
         sll.add(5);
         
         sll.print();    
-        sll.sort();
-        sll.print();
-        sll.removeDuplicates();
+        sll.reverse();
         sll.print();
     }
 }
