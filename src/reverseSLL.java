@@ -1,10 +1,10 @@
 class SinglyLinkedList1{
     int data;
-    SinglyLinkedList next;
-    SinglyLinkedList head = null;
+    SinglyLinkedList1 next;
+    SinglyLinkedList1 head = null;
 
     public void add(int data){
-        SinglyLinkedList newNode = new SinglyLinkedList();
+        SinglyLinkedList1 newNode = new SinglyLinkedList1();
         newNode.data = data;
         newNode.next = null;
 
@@ -12,7 +12,7 @@ class SinglyLinkedList1{
             head = newNode;
         }
         else{
-            SinglyLinkedList temp = head;
+            SinglyLinkedList1 temp = head;
             while(temp.next != null){
                 temp = temp.next;
             }
@@ -21,7 +21,7 @@ class SinglyLinkedList1{
     }
 
     public void print(){
-        SinglyLinkedList temp = head;
+        SinglyLinkedList1 temp = head;
         while(temp != null){
             System.out.print(temp.data + " ");
             temp = temp.next;
@@ -30,9 +30,9 @@ class SinglyLinkedList1{
     }
     
     public void reverse(){
-        SinglyLinkedList prev = null;
-        SinglyLinkedList current = head;
-        SinglyLinkedList next = null;
+        SinglyLinkedList1 prev = null;
+        SinglyLinkedList1 current = head;
+        SinglyLinkedList1 next = null;
         while(current != null){
             next = current.next;
             current.next = prev;
