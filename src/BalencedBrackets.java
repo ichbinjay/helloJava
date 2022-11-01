@@ -7,25 +7,6 @@ class Result {
     Stack<Character> stack = new Stack<Character>();
     for (int i = 0; i < s.length(); i++) {
         char c = s.charAt(i);
-        if (c == '(' || c == '[' || c == '{') {
-            stack.push(c);
-        }
-        if (c == ')' || c == ']' || c == '}') {
-            if (stack.isEmpty()) {
-                return "NO";
-            }
-            char last = stack.peek();
-            if (c == ')' && last == '(' || c == ']' && last == '[' || c == '}' && last == '{') {
-                stack.pop();
-            } else {
-                return "NO";
-            }
-        }
-    }
-    return stack.isEmpty() ? "YES" : "NO";
-    }
-}
-        char c = s.charAt(i);
         if (c == '(' || c == '{' || c == '[') {
             stack.push(c);
         } else if (c == ')' || c == '}' || c == ']') {
