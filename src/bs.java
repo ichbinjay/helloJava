@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 class bs {
     public static void main(String[] args) {
-        /*
-         * You are given two arrays of integers a and b. For each element of the second array bj you should find the number of elements in array a that are less than or equal to the value bj.
-         * 
-         */
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
@@ -27,5 +23,6 @@ class bs {
             }
             System.out.print(count + " ");
         }
+        sc.close();
     }
 }
