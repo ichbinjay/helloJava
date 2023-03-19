@@ -20,3 +20,23 @@ def getExcelColumnName(n):
 
 # example usage
 print(getExcelColumnName(705))
+
+# do the reverse of above function. Given a column name, find its corresponding number
+# Path: src\printExcelColumnNumber.py
+def getExcelColumnNumber(columnName):
+    # initialize result
+    result = 0
+
+    # traverse columnName from left to right
+    for i in range(len(columnName)):
+        # find the value of current character 'c'
+        c = columnName[i]
+        val = ord(c) - ord('A') + 1
+
+        # multiply result by 26 and add 'val'
+        result = result * 26 + val
+
+    return result
+
+
+print(getExcelColumnNumber(input()))
