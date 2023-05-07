@@ -27,7 +27,6 @@ class EncodeAndDecodeStrings {
 
 class Main{
     public static void main(String[] args) {
-        EncodeAndDecodeStrings codec = new EncodeAndDecodeStrings();
         System.out.println(Arrays.toString(EncodeAndDecodeStrings.decode(EncodeAndDecodeStrings.encode(new String[]{"Hello", "World"}))));
     }
 }

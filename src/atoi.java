@@ -1,4 +1,4 @@
-public class Solution {
+class Solution {
     // DO NOT MODIFY THE LIST. IT IS READ ONLY
     public int atoi(final String str) {
         int sign = 1, base = 0, i = 0;

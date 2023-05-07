@@ -1,7 +1,6 @@
-import java.io.*;
 import java.util.*;
 
-public class Solution {
+class Solution {
     public static char function(String s) {
         int[] arr = new int[26];
         for(char ch: s.toCharArray()){

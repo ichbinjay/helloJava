@@ -1,4 +1,4 @@
-public class Solution {
+class Solution {
     public int solve(String A) {
         if (A == null || A.length() == 0) return 0;
         int counter = 0;
@@ -9,5 +9,9 @@ public class Solution {
             }
         }
         return counter % 10003;
+    }
+
+    public long[] dailyTemperatures(int[] temps) {
+        return null;
     }
 }

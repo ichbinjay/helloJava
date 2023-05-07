@@ -17,6 +17,10 @@
 
 """
 
+import collections
+from typing import List
+
+
 class Solution:
     def addNegabinary(self, arr1: List[int], arr2: List[int]) -> List[int]:
         # converts from negative binary form array to a valuation
