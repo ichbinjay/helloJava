@@ -7,7 +7,7 @@ for _ in range(t):
         if arr[i] <= 0 and arr[i] > n:
             arr[i] = n+10
     
-    for i in range(n):
+    for i in range(n): 
         if(abs(arr[i])!=n+10):
             arr[abs(arr[i])-1] = -abs(arr[abs(arr[i])-1])
 
