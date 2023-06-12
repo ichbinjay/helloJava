@@ -1,21 +1,38 @@
- int[] answerQueries(ArrayList<Query> queries, int N){
-        TreeSet<Integer> set =   new TreeSet();
-        ArrayList<Integer> arr = new ArrayList();
-        for(Query q: queries){
-            if(q.getType() == 1){
-                set.add(q.getIndex());
-            }else{
-                Integer val = set.ceiling(q.getIndex());
-                if(val==null){
-                    arr.add(-1);
-                }else{
-                    arr.add(val);
+import java.io.*;
+import java.util.*;
+
+public class Solution{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-->0){
+            long n = sc.nextLong();
+            int q = sc.nextInt();
+            TreeSet<Integer> ts = new TreeSet<>();
+            for(int i=0;i<1;i++){
+                int type = sc.nextInt(), ind = sc.nextInt();
+                if(type==1){
+if(ts.contains(ind)) ts.remove(ind);
+else ts.add(ind);
+                }
+                else{
+                    int floor, ceil;
+                    try{
+                        floor = ts.floor(ind);
+                    }
+                    catch(Exception e){
+                        floor = Integer.MAX_VALUE;
+                    }
+                    try{
+                        ceil = ts.ceiling(ind);
+                    }
+                    catch(Exception e){
+                        ceil = Integer.MAX_VALUE;
+                    }
+                    if(ts.isEmpty()) System.out.println(-1);
+                    else System.out.println(Math.min(Math.abs(ind-floor), Math.abs(ind-ceil)));
                 }
             }
-       }
-       int[] result = new int[arr.size()];
-       for(int i=0;i<arr.size();i++){
-            result[i] = arr.get(i);
         }
-        return result;
     }
+}
