@@ -4,11 +4,11 @@ for _ in range(t):
     arr = list(map(int, input().split()))
 
     for i in range(n):
-        if arr[i] <= 0 or arr[i] > n:
+        if arr[i] <= 0 and arr[i] > n:
             arr[i] = n+10
     
     for i in range(n):
-        if abs(arr[i])!=n+10:
+        if(abs(arr[i])!=n+10):
             arr[abs(arr[i])-1] = -abs(arr[abs(arr[i])-1])
 
     for i in range(n):
