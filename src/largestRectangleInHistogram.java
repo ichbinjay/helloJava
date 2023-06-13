@@ -41,3 +41,13 @@ class Solution {
         return maxArea;
     }
 }
+
+/*
+how to solve this problem?
+1) create a monotonically increasing stack. which means that the stack will always be in increasing order.
+2) if current element is less than stack top, then keep popping the stack until the stack top is less than current element.
+3) in this popping part, we will use two vars, height and index. height is the height of that histogram and index is basically the point(probably behind)
+from where we include in the map.
+4) we are using a start var to keep track of the index from where we are starting to include in the map.
+5) last fop loop is to calculate the area os stack elements which survived the popping part.
+*/
