@@ -27,11 +27,26 @@ class BST:
                     node.right = Node(val)
                     break
 
+    def traverse(self):
+        def helper(node):
+            if not node:
+                return
+
+            print(node.val, end=" ")
+            helper(node.left)
+            helper(node.right)
+
+
+        root = self.root
+        helper(root)
 def main():
     bst = BST(Node(4))
     bst.insert(1)
+    bst.insert(0)
     bst.insert(3)
     bst.insert(5)
     bst.insert(6)
 
+
+    bst.traverse()
 main()
