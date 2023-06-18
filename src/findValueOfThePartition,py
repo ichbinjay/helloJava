@@ -1,0 +1,19 @@
+from typing import List
+
+
+class Solution:
+    def findValueOfPartition(self, nums: List[int]) -> int:
+        def diffrences(arr):
+            res = []
+            #find the diffrences between each two consecutive elements
+            for i in range(len(arr) - 1):
+                res.append(arr[i + 1] - arr[i])
+            return res
+    
+        nums.sort()
+        diffs = diffrences(nums)
+        return min(diffs)
+    
+s = Solution()
+print(s.findValueOfPartition([1, 2, 3, 4]))
+print(s.findValueOfPartition([100,1, 10]))
