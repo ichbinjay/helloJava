@@ -1,0 +1,33 @@
+''''''
+Sample Input 1
+
+7
+19 12 3 14 5 16 5 
+Sample Output 1
+
+55319161412'''
+
+t = input()
+arr = [int(x) for x in input().split()]
+start = 1
+end = 10
+while arr:
+    temp = []
+    for i in range(len(arr)):
+        is start <= arr[i] < end or arr[i] == 0:
+            temp.append(arr[i])
+    if temp:
+        print(*sorted(temp, reverse=True), sep='', end='')
+    for i in temp:
+        arr.remove(arr.index(i))
+    start *= 10
+    end *= 10'''
+
+class LargerNumKey(str):
+    def __lt__(x, y):
+        return x+y > y+x
+        
+class Solution:
+    def largestNumber(self, nums):
+        largest_num = ''.join(sorted(map(str, nums), key=LargerNumKey))
+        return '0' if largest_num[0] == '0' else largest_num
