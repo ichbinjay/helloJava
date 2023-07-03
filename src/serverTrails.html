@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button onclick="myScript(1)">Click me</button>
+        <button onclick="myScript(2)">Click me!!</button>
+        <div id="demo"></div>
+        <script>
+            function myScript(id) {
+                let url ="https://ichbinjay.pythonanywhere.com/"
+                if(id == 1){
+                    url = url + "atrun/"
+                } else {
+                    url = url + "btrun/"
+                }
+
+                fetch(url)
+                .then(response => response.blob()) /*check this part*/
+                .then(data => {
+                    let img = document.createElement('img');
+                    img.src = URL.createObjectURL(data);
+
+                    let demo = document.getElementById("demo"); //its a div
+                    img.style.width = "100px";
+                    img.style.height = "100px";
+                    demo.appendChild(img);
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            }
+        </script>
+    </body>
+
+
+
+    <!--
+#python backend code
+from flask import Flask, send_file
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": '*'}})
+
+@app.route("/atrun/")
+def atrun():
+  filename = "Screenshot (4).png"
+    return send_file(filename, mimetype='image/gif')
+
+@app.route("/btrun/")
+def btrun():
+  return "b"
+
+    -->
