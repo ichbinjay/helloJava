@@ -20,33 +20,73 @@ class BST:
                 else:
                     node.left = Node(val)
                     break
-            else:
+            elif val > node.val:
                 if node.right:
                     node = node.right
                 else:
                     node.right = Node(val)
                     break
 
-    def traverse(self):
-        def helper(node):
-            if not node:
-                return
-
+    def preorder(self, node):
+        if node:
             print(node.val, end=" ")
-            helper(node.left)
-            helper(node.right)
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def inorder(self, node):
+        if node:
+            self.inorder(node.left)
+            print(node.val, end=" ")
+            self.inorder(node.right)
+
+    def postorder(self, node):
+        if node:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.val, end=" ")
 
 
-        root = self.root
-        helper(root)
+    def isFBT(self, root):
+        if root is None:
+            return True
+        if root.left is None and root.right is None:
+            return True
+        if root.left is None or root.right is None:
+            return False
+        return self.isFBT(root.left) and self.isFBT(root.right)
+
+    def isCBT(self, root):
+        q = [root]
+        flag = False
+        while q:
+            node = q.pop(0)
+            if node.left:
+                if flag:
+                    return False
+                q.append(node.left)
+            else:
+                flag = True
+            if node.right:
+                if flag:
+                    return False
+                q.append(node.right)
+            else:
+                flag = True
+        return True
+
+
+
+
 def main():
-    bst = BST(Node(4))
-    bst.insert(1)
-    bst.insert(0)
-    bst.insert(3)
-    bst.insert(5)
-    bst.insert(6)
+    t = int(input())
+    for i in range(t):
+        n = int(input())
+        arr = list(map(int, input().split()))
+        bst = BST(Node(arr[0]))
+        for j in range(1, n):
+            bst.insert(arr[j])
+
+        print(str(bst.isCBT(bst.root)).lower())
 
 
-    bst.traverse()
 main()
