@@ -73,6 +73,19 @@ class BST:
             else:
                 flag = True
         return True
+    
+
+    def kthSmallest(self, root, k):
+        res = []
+        def inorder(root):
+            if root:
+                nonlocal res
+                inorder(root.left)
+                res.append(root.val)
+                inorder(root.right)
+
+        inorder(root)  
+        return res[k-1]
 
 
 
@@ -80,13 +93,13 @@ class BST:
 def main():
     t = int(input())
     for i in range(t):
-        n = int(input())
+        n, k = map(int, input().split())
         arr = list(map(int, input().split()))
         bst = BST(Node(arr[0]))
         for j in range(1, n):
             bst.insert(arr[j])
 
-        print(str(bst.isCBT(bst.root)).lower())
+        print(bst.kthSmallest(bst.root, k))
 
 
 main()
