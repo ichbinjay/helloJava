@@ -1,3 +1,22 @@
+import collections
+
+def printLeftView(root):
+    if not root:
+        return
+    queue = [(root, 0)]  # Maintain a queue of nodes and their levels
+    level_dict = {}  # Keep track of the first node encountered at each level
+    while queue:
+        node, level = queue.pop(0)
+        if level not in level_dict:
+            level_dict[level] = node.data
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+    left_view = [level_dict[level] for level in sorted(level_dict.keys())]
+    print(' '.join(str(node) for node in left_view))
+
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -30,7 +49,7 @@ class BST:
     def preorder(self, node):
         if node:
             print(node.val, end=" ")
-            self.preorder(node.left)
+            self.preorder(node.left)                                                        
             self.preorder(node.right)
 
     def inorder(self, node):
@@ -86,20 +105,36 @@ class BST:
 
         inorder(root)  
         return res[k-1]
+    
 
+    
 
+    def rightSideView(self, root):
+        res = []
+        q = collections.deque([root])
 
+        while q:
+            rightSide = None
+            qLen = len(q)
+
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    rightSide = node
+                    q.append(node.left)
+                    q.append(node.right)
+            if rightSide:
+                res.append(rightSide.val)
+        return res
 
 def main():
     t = int(input())
     for i in range(t):
-        n, k = map(int, input().split())
+        n = int(input())
         arr = list(map(int, input().split()))
         bst = BST(Node(arr[0]))
         for j in range(1, n):
             bst.insert(arr[j])
-
-        print(bst.kthSmallest(bst.root, k))
-
+        printLeftView(bst.root)
 
 main()
