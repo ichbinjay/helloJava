@@ -107,8 +107,6 @@ class BST:
         return res[k-1]
     
 
-    
-
     def rightSideView(self, root):
         res = []
         q = collections.deque([root])
@@ -126,6 +124,23 @@ class BST:
             if rightSide:
                 res.append(rightSide.val)
         return res
+    
+    def heightOfTree(self, root):
+        if root is None:
+            return 0
+        else:
+            height = 0
+
+            def dfs(root, level):
+                nonlocal height
+                if root:
+                    height = max(height, level)
+                    dfs(root.left, level+1)
+                    dfs(root.right, level+1)
+
+            dfs(root, 0)
+            return height
+
 
 def main():
     t = int(input())
@@ -135,6 +150,7 @@ def main():
         bst = BST(Node(arr[0]))
         for j in range(1, n):
             bst.insert(arr[j])
-        printLeftView(bst.root)
+        print(bst.heightOfTree(bst.root))
+
 
 main()
