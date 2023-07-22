@@ -30,19 +30,27 @@ class BST:
         self.left = None
         self.right = None
 
-    def insert(self, val):
+    def insert(self, val, depth=1):
+        '''
+        insert is modifed to print the depth of of tree node while inserting itself.
+        default depth is 1 as 0 is taken by root,
+        '''
         node = self.root
         while True:
             if val < node.val:
                 if node.left:
                     node = node.left
+                    depth += 1
                 else:
+                    print(depth, end=" ")
                     node.left = Node(val)
                     break
             elif val > node.val:
                 if node.right:
                     node = node.right
+                    depth += 1
                 else:
+                    print(depth, end=" ")
                     node.right = Node(val)
                     break
 
@@ -64,31 +72,6 @@ class BST:
             self.postorder(node.right)
             print(node.val, end=" ")
 
-    def levelorder(self, node):
-        q = collections.deque([node])
-        levels = collections.deque()
-        while q:
-            qlen = len(q)
-            level = []
-            for i in range(qlen):
-                node = q.popleft()
-                level.append(node.val)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-            levels.appendleft(level)
-        return levels
-    
-    def height(self, node):
-        if node is None:
-            return 0
-        return 1 + max(self.height(node.left), self.height(node.right))
-
-    def isBalanced(self, root):
-        if root is None:
-            return True
-        return abs(self.height(root.left) - self.height(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
 
     def isFBT(self, root):
         if root is None:
@@ -118,17 +101,7 @@ class BST:
                 flag = True
         return True
     
-    def isValid(self, root):
-        def valid(node, left, right):
-            if not node:
-                return True
-            if not (node.val < right and node.val > left):
-                return False
 
-            return valid(node.left, left, node.val) and valid(node.right, node.val, right)
-        
-        return valid(root, float('-inf'), float('inf'))
-    
     def kthSmallest(self, root, k):
         res = []
         def inorder(root):
@@ -177,14 +150,17 @@ class BST:
             return height
 
 
+
 def main():
     t = int(input())
     for i in range(t):
         n = int(input())
         arr = list(map(int, input().split()))
         bst = BST(Node(arr[0]))
+        print("0", end= " ")
         for j in range(1, n):
             bst.insert(arr[j])
+        print()
 
 
 main()
